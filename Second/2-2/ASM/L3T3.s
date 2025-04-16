@@ -1,0 +1,31 @@
+.text
+.global _start
+_start:
+    LDR R0,=0xFF200020
+    LDR R1,=0xFF200030
+    MOV R8,
+    CYCLE:
+    LDR R6,=ARR_A
+    LDR R7,=ARR_B
+    MOV R2,
+    MET:
+    LDR R5,[R6]
+    STR R5,[R0]
+    LDR R4,[R7]
+    STR R4,[R1]
+    LDR R3, DEL
+    LOOP:SUBS R3,
+    BNE LOOP
+    SUBS R2,
+    BNE MET
+    SUBS R8,
+    BNE CYCLE
+    FIN: B FIN
+    ARR_A:.word 0x0C, 0x0C0C, 0x0C0C08, 0x0C0C083F, 0x0C083F66, 0x083F6608, 
+        0x3F66085B, 0x66085B3F, 0x085B3F5B, 0x5B3F5B6D, 0x3F5B6D00, 0x5B6D0000, 
+        0x6D000000, 0x0, 0x0, 0x0
+    ARR_B:.word 0x0, 0x0, 0x0, 0x0, 0x0C, 0x0C0C, 0x0C08, 0x083F, 0x3F66, 
+        0x6608, 0x085B, 0x5B3F, 0x3F5B, 0x5B6D, 0x6D00, 0x0
+    DEL:.word 0x9000000
+.end
+
