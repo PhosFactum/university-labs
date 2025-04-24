@@ -84,7 +84,7 @@ int main() {
         sizes.push_back(i);
     }
 
-    ofstream results("sorting_results.csv");
+    ofstream results("sorting_results.xlsx");
     results << "Elements,Insertion Sort (µs),Selection Sort (µs),Bubble Sort (µs)\n";
 
     const int numTests = 1000;  // Уменьшено для ускорения
@@ -105,7 +105,7 @@ int main() {
     }
 
     results.close();
-    cout << "Результаты сохранены в sorting_results.csv" << endl;
+    cout << "Результаты сохранены в sorting_results.xlsx" << endl;
     return 0;
 }
 
