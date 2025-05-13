@@ -1,0 +1,60 @@
+rest:
+    path: v1/api/auth/
+        method: post
+        request:
+            body:
+                telegram_id: 
+                    required: True
+                    type: int
+                    description: Add a new user into database if it not contains him else do nothing 
+                username:
+                    required: True
+                    type: string
+        response:
+            - 200:
+                body:
+                    message:
+                        type: str
+            - 400:
+                body:
+                    message:
+                        type: str
+    path: v1/api/get_files/{user_id}
+        method: get
+        request:
+            params:
+                page:
+                    type: int
+                    default: 0
+                    description: define the offset of elements to send
+                limit:
+                    type: int
+                    default: 10
+                    description: define the volume of elements to send
+                user_id:
+                    type: int
+                    required: true
+                    description: the id of user whose files will send
+        response:
+            - 200:
+                body:
+                    files:
+                        type: array
+                        elements:
+                            id:
+                                type: int
+                            filename:
+                                type: string
+    path: v1/api/send_file/
+        method: post
+        request:
+            body:
+                telegram_id:
+                    type: int
+                    required: True
+                file_size:
+                    type: int
+                    required: True
+                file_size:
+                    type: int
+                    required: True
